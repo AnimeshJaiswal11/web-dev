@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>body {
+  text-align: center;
+  background-image: url("https://img.freepik.com/free-photo/modern-white-brick-wall-texture-background_41389-450.jpg?size=626&ext=jpg");
+  }
+  h1{
+    font-size: 50px;
+  }
+  button{
+    width: 150px;
+    height: 50px;
+    font-size: 40px;
+    color: black;
+    background-color: pink;
+    margin-bottom: 50px;
+  }
+  button:hover{
+    background-color: crimson;
+  }
+  td{
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    text-align: center;
+    font-size: 75px;
+  }
+  table{
+    margin-left: 39.2%;
+  }
+  </style>
+  
+<body>
+  <h1 id="one">Welcome to Tic Tac Toe World !!</h1>
+  <button id="butn">Restart</button>
+  <table align = 'centre'>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+</body>
+
+<script>
+  function colorgenerator(){
+  letter = "0123456789ABCDEF";
+  color = "#";
+  for (i=0; i<6; i++){
+    color += letter[Math.floor(Math.random()*16)];
+  }
+  return color
+}
+var headone = document.querySelector("#one")
+function changecolor(){
+  colorinp = colorgenerator();
+  headone.style.color = colorinp;
+}
+setInterval("changecolor()",500)
+//restart game button
+var restart = document.getElementById('butn');
+var squares = document.querySelectorAll('td');
+function clearboard(){
+    for (var i=0; i<squares.length; i++){
+      squares[i].textContent = '';
+    }
+}
+restart.addEventListener("click",clearboard);
+var celone = document.querySelector("#cellone");
+function changemarker(){
+  if (this.textContent === ""){
+    this.textContent = "X";
+  }
+  else if (this.textContent === "X"){
+    this.textContent = "O";
+  }
+  else{
+    this.textContent = "";
+  }
+}
+for (var i=0; i<squares.length; i++){
+  squares[i].addEventListener('click',changemarker);
+}
+</script>
+</html>
+
